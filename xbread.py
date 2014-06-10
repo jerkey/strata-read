@@ -8,7 +8,7 @@ xbee = XBee(ser)
 # Continuously read and print packets
 while True:
     try:
-        response = xbee.wait_read_frame()['rf_data']
+        response = xbee.wait_read_frame()
         print response
     except KeyboardInterrupt:
         break
