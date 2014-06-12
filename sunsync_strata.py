@@ -15,7 +15,7 @@ import time
 import struct
 import threading
 import sys
-import digicli
+#import digicli
 from ftplib import FTP
 import cStringIO
 import os
@@ -681,13 +681,14 @@ def write_stat_to_file( address , raw_data ):
     buf.write('adc high:,%d\r\n' % adc_config_h )
     
     #the below code will throw for panama
-    if hardware_version < 143 || hardware_version != 135:
-        try:
-            buf.write('dac:,%d\r\n' % dac )
-            buf.write('switch and ps:,%d\r\n' % Power_and_Switch )
-            buf.write('max thermal:,%4.3f\r\n' % max_joules )
-        except:    
-            do_nothing = 1
+#    if hardware_version < 143 || hardware_version != 135:
+#        try:
+#            buf.write('dac:,%d\r\n' % dac )
+#            buf.write('switch and ps:,%d\r\n' % Power_and_Switch )
+#            buf.write('max thermal:,%4.3f\r\n' % max_joules )
+#        except:    
+#            do_nothing = 1
+    do_nothing = 1
     buf.seek( 0 )
     return ( filename, buf , statDir , 0)
     
