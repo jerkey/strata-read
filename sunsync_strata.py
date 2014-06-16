@@ -733,19 +733,18 @@ while Run == 1:
 	    #consider adding try catch around this 
 	    response = xbee.wait_read_frame()
 	    payload = response['rf_data']
+
+	    src_addr = struct.unpack("!h", response['source_addr'])[0]
 	    
-	    src_addr = int(response['source_addr'])
-            print src_addr
-	    #map hex to numbers
+            #map hex to numbers
             payload = map( ord , payload )
 	    
             last_radio_rx_time = float(time.time())
             sequential_timeouts = 0
             
 	     #jake you may have to mess with the hex conversion from the xbee api to get to an int
-            address_string = src_addr
-            address = int( address_string , 16 )
-            
+            address = src_addr
+
             id = payload[ 1 ] +   ( payload[ 2 ]  << 8 )
             key = ( id << 8 ) + address
             

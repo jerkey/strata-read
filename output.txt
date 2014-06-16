@@ -1,0 +1,62 @@
+The total numbers of args passed to the script: 1
+Args list: ['sunsync_strata.py']
+Script name: sunsync_strata.py
+NOT using ftp
+NOT writing to flash drive
+booted
+digi time 1402957474.05
+add:1  id:2438  frame:0
+add:1  id:2438  frame:0
+duplicate frame
+
+add:1  id:2438  frame:1
+add:1  id:2438  frame:2
+curve id:2438 complete:name: 1402957482_1_module b.csv
+deleting dictionary entry: 1 id: 2438
+stat_1402957549_1.csv
+stat msg @address: 1 , vbat:2.86 , V: 12.74, C: 0.001
+stat_1402957549_1.csv
+stat msg @address: 1 , vbat:2.86 , V: 12.74, C: 0.001
+add:1  id:2439  frame:0
+add:1  id:2439  frame:1
+add:1  id:2439  frame:1
+duplicate frame
+
+add:1  id:2439  frame:2
+curve id:2439 complete:name: 1402957616_1_module b.csv
+deleting dictionary entry: 1 id: 2439
+add:1  id:2438  frame:0
+add:1  id:2438  frame:1
+add:1  id:2438  frame:2
+curve id:2438 complete:name: 1402957684_1_module b.csv
+deleting dictionary entry: 1 id: 2438
+add:1  id:2438  frame:0
+add:1  id:2438  frame:1
+add:1  id:2438  frame:1
+duplicate frame
+
+add:1  id:2438  frame:2
+curve id:2438 complete:name: 1402957752_1_module b.csv
+deleting dictionary entry: 1 id: 2438
+stat_1402957818_1.csv
+stat msg @address: 1 , vbat:2.86 , V: 12.74, C: 0.001
+add:1  id:2438  frame:0
+add:1  id:2438  frame:1
+add:1  id:2438  frame:2
+curve id:2438 complete:name: 1402957886_1_module b.csv
+deleting dictionary entry: 1 id: 2438
+add:1  id:2438  frame:0
+add:1  id:2438  frame:1
+add:1  id:2438  frame:2
+curve id:2438 complete:name: 1402957954_1_module b.csv
+deleting dictionary entry: 1 id: 2438
+add:1  id:2438  frame:0
+add:1  id:2438  frame:1
+add:1  id:2438  frame:2
+curve id:2438 complete:name: 1402958021_1_module b.csv
+deleting dictionary entry: 1 id: 2438
+stat_1402958088_1.csv
+stat msg @address: 1 , vbat:2.85 , V: 12.73, C: 0.001
+stat_1402958088_1.csv
+stat msg @address: 1 , vbat:2.85 , V: 12.73, C: 0.001
+
