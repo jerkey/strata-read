@@ -734,7 +734,8 @@ while Run == 1:
 	    response = xbee.wait_read_frame()
 	    payload = response['rf_data']
 	    
-	    src_addr = response['source_addr']
+	    src_addr = int(response['source_addr'])
+            print src_addr
 	    #map hex to numbers
             payload = map( ord , payload )
 	    
