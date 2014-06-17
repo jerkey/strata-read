@@ -240,7 +240,7 @@ def get_multipliers( hardware_version ):
     elif hardware_version == 174:
           dV, dI = set_multipliers( 0.02, 301.0 )
     elif hardware_version == 165:
-          dV, dI = set_multipliers( 0.02, 301.0 )  # // changed from 201.0
+          dV, dI = set_multipliers( 0.02, 299.1 )  # // changed from 201.0
     elif hardware_version == 145:
           dV, dI = set_multipliers( 0.02, 201.0 )   
     elif hardware_version == 143:  #            //pv evo 4/22
