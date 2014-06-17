@@ -1,0 +1,177 @@
+awesome:strata possum$ python sunsync_strata.py debug
+The total numbers of args passed to the script: 2
+Args list: ['sunsync_strata.py', 'debug']
+Script name: sunsync_strata.py
+NOT using ftp
+NOT writing to flash drive
+booted
+digi time 1402983246.93
+iv frame address: 1
+add:1  id:2438  frame:0
+total points: 39
+points in frame 11
+iv frame address: 1
+add:1  id:2438  frame:1
+points in frame 23
+iv frame address: 1
+add:1  id:2438  frame:2
+points in frame 5
+curve id:2438 complete:name: 1402983312_1_module b.csv
+tracer address:,1
+module name:,module b
+sweep id:,2438
+epoch_time:,1402983312
+
+
+params:
+iv points:,39
+mppt power:,81.920
+mppt index:,20
+mppt current:,4.715
+mppt voltage:,17.375
+
+weather station:,no valid weather data
+
+
+sweep time (ms):,0373
+thermal energy (J):,  0.0
+
+
+
+debug info:
+
+vgs1:,1051
+vgs2:,3165
+step:,0117
+hardware version:,165
+delay val:,1
+
+board temp:,19.032
+vbat:,2.512
+charging:,0
+sweep error:,0
+deleting dictionary entry: 1 id: 2438
+status frame address: 1
+stat_1402983379_1.csv
+stat msg @address: 1 , vbat:2.52 , V: 19.07, C: 0.001
+status frame address: 1
+stat_1402983379_1.csv
+stat msg @address: 1 , vbat:2.52 , V: 19.07, C: 0.001
+iv frame address: 1
+add:1  id:2438  frame:0
+total points: 40
+points in frame 11
+iv frame address: 1
+add:1  id:2438  frame:0
+duplicate frame
+
+iv frame address: 1
+add:1  id:2438  frame:1
+points in frame 23
+iv frame address: 1
+add:1  id:2438  frame:2
+points in frame 6
+curve id:2438 complete:name: 1402983447_1_module b.csv
+tracer address:,1
+module name:,module b
+sweep id:,2438
+epoch_time:,1402983447
+
+
+params:
+iv points:,40
+mppt power:,81.635
+mppt index:,20
+mppt current:,4.632
+mppt voltage:,17.626
+
+weather station:,no valid weather data
+
+
+sweep time (ms):,0376
+thermal energy (J):,  0.0
+
+
+
+debug info:
+
+vgs1:,1051
+vgs2:,3297
+step:,0120
+hardware version:,165
+delay val:,1
+
+board temp:,19.355
+vbat:,2.515
+charging:,0
+sweep error:,0
+deleting dictionary entry: 1 id: 2438
+iv frame address: 1
+add:1  id:2438  frame:0
+total points: 40
+points in frame 11
+iv frame address: 1
+add:1  id:2438  frame:0
+duplicate frame
+
+iv frame address: 1
+add:1  id:2438  frame:1
+points in frame 23
+iv frame address: 1
+add:1  id:2438  frame:1
+duplicate frame
+
+iv frame address: 1
+add:1  id:2438  frame:2
+points in frame 6
+curve id:2438 complete:name: 1402983514_1_module b.csv
+tracer address:,1
+module name:,module b
+sweep id:,2438
+epoch_time:,1402983514
+
+
+params:
+iv points:,40
+mppt power:,81.813
+mppt index:,20
+mppt current:,4.704
+mppt voltage:,17.391
+
+weather station:,no valid weather data
+
+
+sweep time (ms):,0360
+thermal energy (J):,  0.0
+
+
+
+debug info:
+
+vgs1:,1093
+vgs2:,3167
+step:,0104
+hardware version:,165
+delay val:,1
+
+board temp:,19.032
+vbat:,2.518
+charging:,0
+sweep error:,0
+iv frame address: 1
+add:1  id:2438  frame:2
+duplicate frame
+
+deleting dictionary entry: 1 id: 2438
+
+
+
+
+
+iv frame address: 1
+add:1  id:2438  frame:0
+total points: 40
+points in frame 11
+deleting dictionary entry: 1 id: 2438
+awesome:strata possum$
+

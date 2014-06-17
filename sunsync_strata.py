@@ -240,7 +240,7 @@ def get_multipliers( hardware_version ):
     elif hardware_version == 174:
           dV, dI = set_multipliers( 0.02, 301.0 )
     elif hardware_version == 165:
-          dV, dI = set_multipliers( 0.02, 201.0 )
+          dV, dI = set_multipliers( 0.02, 301.0 )  # // changed from 201.0
     elif hardware_version == 145:
           dV, dI = set_multipliers( 0.02, 201.0 )   
     elif hardware_version == 143:  #            //pv evo 4/22
@@ -248,7 +248,7 @@ def get_multipliers( hardware_version ):
     elif hardware_version == 142:  #            //pv evo 4/22
       dV, dI = set_multipliers( 0.02, 250.250 )   
     elif hardware_version == 135:  #            //for sun sync
-      dV, dI = set_multipliers( 0.02, 301.0 )  # // changed from 201.0
+      dV, dI = set_multipliers( 0.02, 201.0 )
     else:
         print('could not find lookup val for hardware')
         dV, dI = set_multipliers( 0.02, 1001.0 )  
