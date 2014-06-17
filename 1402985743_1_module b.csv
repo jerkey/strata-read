@@ -1,0 +1,81 @@
+Stratasense iv version:,1.04
+address:,1
+module:,module b
+id:,2438
+seconds(epoch):,1402985743
+
+params:
+total points:,40
+mppt power:,82.021
+mppt index:,20
+mppt current:,4.691
+mppt voltage:,17.483
+weather station:,no valid weather data
+hmp155:,no hmp155 data
+py poa (W/m*m):,-1
+py hor (W/m*m):,-1
+battery (V):,-1.000
+sweep time (ms):,0365
+trace dir:,Voc_TO_Isc
+acc_x:,0015
+acc_y:,0035
+acc_z:,0257
+Thermal ( J ):,  0.0
+
+debug:
+v1:,1075
+v2:,3165
+step:,0109
+hardware ver:,165
+delay:,1
+board temp(C):,18.387
+vbat:,2.505
+charging:,0
+adc_l:,-1
+adc_l:,-1
+def end:,0
+reverse point:,0
+v3:,0
+reverse ms:,0
+
+curve data: (Volts),(Amps)
+18.94,0.000
+18.90,0.217
+18.84,0.439
+18.77,0.658
+18.71,0.877
+18.64,1.107
+18.58,1.323
+18.53,1.537
+18.46,1.773
+18.39,1.992
+18.32,2.237
+18.27,2.457
+18.19,2.695
+18.12,2.950
+18.06,3.167
+17.99,3.393
+17.93,3.631
+17.86,3.878
+17.79,4.142
+17.70,4.409
+17.48,4.691
+16.67,4.739
+15.18,4.781
+13.49,4.802
+11.74,4.815
+9.98,4.817
+8.31,4.810
+6.77,4.789
+5.28,4.710
+3.38,4.561
+2.08,4.836
+1.92,5.070
+1.84,5.285
+1.75,5.515
+1.66,5.761
+1.57,6.005
+1.47,6.252
+1.06,5.036
+0.23,1.391
+0.00,0.008

@@ -604,6 +604,73 @@ class wait_for_input( threading.Thread ):
                 Run = 0       
       
 
+class FTPpush(threading.Thread):
+      def run(self):
+         
+            global UseFlash
+            global UseFTP
+           
+            global ftpServer
+            global ftpUser
+            global ftpPwd
+            global ftpDir
+
+            max_streams = 200
+
+           
+            while Run == 1:
+                time.sleep( 1.0 )
+                while len( text_streams ) > max_streams:
+                    fileName , stream_to_send = text_streams[0]
+                    print('over-writing %s' % fileName )
+                    text_streams.pop( 0 )
+                   
+                if len( text_streams ) == 0:
+                        time.sleep( 5.0 )
+                        continue
+
+                saves = len( text_streams )
+                if saves > 20:
+                    saves = 20
+                
+                if ( UseFlash == 0 ) and ( UseFTP == 0 ):
+                    for b in range( saves ):
+                        fileName , stream_to_send, dir , write_tries  = text_streams.pop( 0 )
+                        stream_to_send.close()
+                    continue   
+                if UseFTP == 0:
+                    for z in range( saves ):
+                        text_streams.pop( 0 )
+                    continue
+                try:
+                    if ftpUser == 'anonymous':
+                        ftpClient = FTP( ftpServer )
+                        ftpClient.login()
+                    else:
+                        ftpClient = FTP( ftpServer )
+                        ftpClient.login(ftpUser , ftpPwd)
+                   
+                    for n in range( saves ):                        
+                        try:
+                           fileName , stream_to_send, dir , write_tries  = text_streams[ 0 ]
+                           text_streams.pop( 0 )
+                           if dir != "":
+                               ftpClient.cwd( dir )
+                              
+                           ftpClient.storbinary("STOR " + fileName , stream_to_send )
+                           print('uploaded to ftp:%s ' % fileName )      
+                           stream_to_send.close()      
+                           ftpClient.cwd("..")
+                        except:
+                           text_streams.append( ( fileName , stream_to_send , dir , write_tries + 1 ) )
+                           raise
+                    ftpClient.close()       
+                except Exception, ex:
+                        print( ex )
+                        print('sleeping for 20 seconds')
+                        time.sleep( 10.0 )
+           
+            print('file uploaded closed')
 
               
 
@@ -722,6 +789,8 @@ xbee = XBee(ser)
 print('booted')
 print( 'digi time %s' % time.time() )
 
+ftp_pusher = FTPpush()
+ftp_pusher.start()
 
 poof = 0
 
