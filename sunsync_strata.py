@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 
 #####################################################################
 # This is the main project module
@@ -10,6 +11,7 @@
 
 from socket import * 
 #from array import *
+from pprint import pprint
 import array
 import time
 import struct
@@ -315,7 +317,7 @@ class curve:
                   return
             if frame_number != self.last_frame_added + 1:
                   print('skipped a frame\r\n')
-                  
+                  return
 
             self.last_frame_added = frame_number        
             points_in_frame =  raw_data[ loc ] 
@@ -398,7 +400,6 @@ class curve:
             
             self.dV, self.dI = get_multipliers( self.hardware_version )
             
-                  
             self.sweep_time_scaler_per_point = raw_data[ loc ]
             loc = loc + 1
             #struct.unpack('<H', raw_data[loc : loc + 2])[0]
@@ -415,12 +416,9 @@ class curve:
             self.info_byte = raw_data[ loc ]
             loc = loc + 1
 
-
-
             self.isCharging = 0
             if self.info_byte & 0x80 == 0x80:
                 self.isCharging = 1
-
 
             self.vbat = raw_data[ loc ] + ( raw_data[ loc + 1 ] << 8 )
             self.vbat = 0.00322*self.vbat
@@ -621,9 +619,14 @@ class FTPpush(threading.Thread):
             while Run == 1:
                 time.sleep( 1.0 )
                 while len( text_streams ) > max_streams:
-                    fileName , stream_to_send = text_streams[0]
-                    print('over-writing %s' % fileName )
-                    text_streams.pop( 0 )
+#                    try:
+                        fileName , stream_to_send, foo, bar = text_streams[0]
+                        print('over-writing %s' % fileName )
+                        text_streams.pop( 0 )
+ #                   except Exception as e:
+#                        print "Failed on text_streams[0]: "
+#                        pprint(text_streams[0])
+                        
                    
                 if len( text_streams ) == 0:
                         time.sleep( 5.0 )
@@ -664,7 +667,7 @@ class FTPpush(threading.Thread):
                         except:
                            text_streams.append( ( fileName , stream_to_send , dir , write_tries + 1 ) )
                            raise
-                    ftpClient.close()       
+                    ftpClient.close()
                 except Exception, ex:
                         print( ex )
                         print('sleeping for 20 seconds')
@@ -762,8 +765,8 @@ def write_stat_to_file( address , raw_data ):
 SendPos = 0
 
 
-halt_on_keyboard = wait_for_input()
-halt_on_keyboard.start()
+#halt_on_keyboard = wait_for_input()
+#halt_on_keyboard.start()
 
 
 
@@ -780,9 +783,9 @@ current_error = 0
 last_radio_rx_time = 0
 
 
-ser = serial.Serial('/dev/tty.usbserial-FTE4XS76', 115200)
+#ser = serial.Serial('/dev/tty.usbserial-FTE4XS76', 115200)
 
-xbee = XBee(ser)
+xbee = XBee(None)
 
 
 
@@ -794,14 +797,17 @@ ftp_pusher.start()
 
 poof = 0
 
+#print "Got here and run: " + str(Run)
+
 loop_counts = 0 
 while Run == 1:        
-
+#            print "Got here 2"
             loop_counts = loop_counts + 1
             #jake, here is the old call===> payload, src_addr = xbee_socket.recvfrom(255)
 	    #consider adding try catch around this 
 	    response = xbee.wait_read_frame()
 	    payload = response['rf_data']
+            print "Got frame!"
 
 	    src_addr = struct.unpack("!h", response['source_addr'])[0]
 	    
