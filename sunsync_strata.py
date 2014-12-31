@@ -81,6 +81,10 @@ for i in range(total):
         UseFTP = 1
         ftpServer = str( sys.argv[ i + 1 ])
         print('using ftp server %s'%ftpServer)
+    if '-filepath' == str( sys.argv[i]):
+        UseFiles = 1
+        filePath = str( sys.argv[ i + 1 ])
+        print('saving files to %s'%filePath)
     if '-user' == str( sys.argv[i]):
         ftpUser = str( sys.argv[i + 1 ])
         print('using ftp user %s'%ftpUser)
@@ -104,9 +108,13 @@ for i in range(total):
 if UseFTP == 1:
     print( 'using ftp' )
 else:
-    print('NOT using ftp')     
+    print('NOT using ftp')
 
-    
+if UseFiles == 1:
+    print( 'using filepath '+filePath)
+else:
+    print('NOT using files')
+
 if UseFlash == 1:
     print('writing to flash drive')
 else:
@@ -636,44 +644,59 @@ class FTPpush(threading.Thread):
                 if saves > 20:
                     saves = 20
                 
-                if ( UseFlash == 0 ) and ( UseFTP == 0 ):
+                if ( UseFlash == 0 ) and ( UseFTP == 0 ) and ( UseFiles == 0 ):
                     for b in range( saves ):
                         fileName , stream_to_send, dir , write_tries  = text_streams.pop( 0 )
                         stream_to_send.close()
                     continue   
-                if UseFTP == 0:
+                if ( UseFTP == 0 ) and ( UseFiles == 0 ):
                     for z in range( saves ):
                         text_streams.pop( 0 )
                     continue
-                try:
-                    if ftpUser == 'anonymous':
-                        ftpClient = FTP( ftpServer )
-                        ftpClient.login()
-                    else:
-                        ftpClient = FTP( ftpServer )
-                        ftpClient.login(ftpUser , ftpPwd)
-                   
+                if UseFTP == 1:
+                    try:
+                        if ftpUser == 'anonymous':
+                            ftpClient = FTP( ftpServer )
+                            ftpClient.login()
+                        else:
+                            ftpClient = FTP( ftpServer )
+                            ftpClient.login(ftpUser , ftpPwd)
+
+                        for n in range( saves ):
+                            try:
+                               fileName , stream_to_send, dir , write_tries  = text_streams[ 0 ]
+                               text_streams.pop( 0 )
+                               if dir != "":
+                                   ftpClient.cwd( dir )
+
+                               ftpClient.storbinary("STOR " + fileName , stream_to_send )
+                               print('uploaded to ftp:%s ' % fileName )
+                               stream_to_send.close()
+                               ftpClient.cwd("..")
+                            except:
+                               text_streams.append( ( fileName , stream_to_send , dir , write_tries + 1 ) )
+                               raise
+                        ftpClient.close()
+                    except Exception, ex:
+                            print( ex )
+                            print('sleeping for 20 seconds')
+                            time.sleep( 10.0 )
+
+                if UseFiles == 1:
                     for n in range( saves ):                        
                         try:
                            fileName , stream_to_send, dir , write_tries  = text_streams[ 0 ]
                            text_streams.pop( 0 )
-                           if dir != "":
-                               ftpClient.cwd( dir )
-                              
-                           ftpClient.storbinary("STOR " + fileName , stream_to_send )
-                           print('uploaded to ftp:%s ' % fileName )      
+                           fd = open(filePath + dir + fileName,'w')
+                           print('save to file:%s ' % filePath + dir + fileName )
+                           fd.write(stream_to_send.getvalue())
+                           fd.flush()
                            stream_to_send.close()      
-                           ftpClient.cwd("..")
                         except:
                            text_streams.append( ( fileName , stream_to_send , dir , write_tries + 1 ) )
                            raise
-                    ftpClient.close()
-                except Exception, ex:
-                        print( ex )
-                        print('sleeping for 20 seconds')
-                        time.sleep( 10.0 )
            
-            print('file uploaded closed')
+            print('file uploaded/saved closed')
 
               
 
